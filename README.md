@@ -1,0 +1,2 @@
+# Graduate-Cybersecurity-Portfolio-Security-Assurance-and-Network-Management-Project-Reports
+Throughout these works, I apply a defense-in-depth mindset, integrating technical controls with governance, risk, and compliance (GRC) considerations. Emphasis is placed on analytical reasoning, documentation clarity, and decision-making grounded in threat modeling and risk analysis—skills essential for roles in security engineering, security opps.
