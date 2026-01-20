@@ -1,0 +1,48 @@
+Python
+
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+from datetime import datetime
+
+# Default arguments
+default_args = {
+    'owner': 'airflow',
+    'retries': 1,
+    'retry_delay': timedelta(minutes=5),
+    'start_date': datetime(2024, 1, 1),
+}
+
+# Define the DAG
+with DAG(
+    'three_task_dag',
+    default_args=default_args,
+    schedule_interval=None, # Manual trigger
+) as dag:
+
+    def task_1_function():
+        print("Running Task 1")
+
+    def task_2_function():
+        print("Running Task 2")
+
+    def task_3_function():
+        print("Running Task 3")
+
+    # Define tasks
+    task_1 = PythonOperator(
+        task_id='task_1',
+        python_callable=task_1_function,
+    )
+
+    task_2 = PythonOperator(
+        task_id='task_2',
+        python_callable=task_2_function,
+    )
+
+    task_3 = PythonOperator(
+        task_id='task_3',
+        python_callable=task_3_function,
+    )
+
+    # Set task dependencies
+    task_1 >> task_2 >> task_3
